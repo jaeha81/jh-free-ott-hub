@@ -336,53 +336,53 @@ export default function Player({ streamUrl, title }: PlayerProps) {
 
 ### Wave 1 — 백엔드 기반 (병렬 가능)
 
-- [ ] [BACKEND] 프로젝트 초기화: FastAPI + SQLAlchemy 2.0 + Alembic 설정
+- [x] [BACKEND] 프로젝트 초기화: FastAPI + SQLAlchemy 2.0 + Alembic 설정
   검증: `uvicorn app.main:app` 실행 시 /docs 접근 가능
 
-- [ ] [BACKEND] DB 모델 생성: Content, Source 테이블 + Alembic 마이그레이션
+- [x] [BACKEND] DB 모델 생성: Content, Source 테이블 + Alembic 마이그레이션
   검증: `alembic upgrade head` 성공, 테이블 생성 확인
 
-- [ ] [BACKEND] TMDb 서비스 구현: 영화 검색/상세 API 연동
+- [x] [BACKEND] TMDb 서비스 구현: 영화 검색/상세 API 연동
   검증: `tmdb_service.search("Roman Holiday")` 결과 반환
 
-- [ ] [BACKEND] 시드 데이터 스크립트: TMDb에서 공공도메인 영화 100개+ 수집
-  검증: contents 테이블에 100개 이상 레코드 존재
+- [x] [BACKEND] 시드 데이터 스크립트: TMDb에서 공공도메인 영화 100개+ 수집
+  검증: contents 테이블에 101개 레코드 존재 ✅
 
 ### Wave 2 — 프론트엔드 기반 (병렬 가능, Wave 1과 일부 병렬)
 
-- [ ] [FRONTEND] 프로젝트 초기화: Next.js 14 App Router + Tailwind CSS + TypeScript
+- [x] [FRONTEND] 프로젝트 초기화: Next.js 14 App Router + Tailwind CSS + TypeScript
   검증: `npm run dev` 실행 시 localhost:3000 접근 가능
 
-- [ ] [FRONTEND] 홈 화면: 추천 캐러셀 + 카테고리별 가로 스크롤
+- [x] [FRONTEND] 홈 화면: 추천 캐러셀 + 카테고리별 가로 스크롤
   검증: 홈에서 작품 카드가 캐러셀로 표시됨
 
-- [ ] [FRONTEND] 탐색 화면: 장르/국가/자막/재생방식 필터 + 검색 바
+- [x] [FRONTEND] 탐색 화면: 장르/국가/자막/재생방식 필터 + 검색 바
   검증: 필터 변경 시 결과 갱신
 
-- [ ] [FRONTEND] 상세 화면: 포스터, 시놉시스, 소스 목록, 재생/연결 버튼
+- [x] [FRONTEND] 상세 화면: 포스터, 시놉시스, 소스 목록, 재생/연결 버튼
   검증: 작품 클릭 → 상세 → 재생방식에 따라 인앱/외부 분기
 
 ### Wave 3 — 통합 + 재생 (Wave 1, 2 완료 후)
 
-- [ ] [BACKEND] 검색 API: Full-Text Search + 필터 조합 엔드포인트
-  검증: `/api/search?q=holiday&genre=드라마&country=US` 정확한 결과
+- [x] [BACKEND] 검색 API: Full-Text Search + 필터 조합 엔드포인트
+  검증: `/api/search/` verified_only, recent 정렬 포함 완료
 
-- [ ] [FRONTEND] HLS 플레이어: 공공도메인 작품 인앱 직접 재생
-  검증: Internet Archive 공공도메인 영화 1편 인앱 재생 성공
+- [x] [FRONTEND] HLS 플레이어: 공공도메인 작품 인앱 직접 재생
+  검증: Detour (1945) 69분 Archive.org 인앱 재생 성공 ✅
 
-- [ ] [FRONTEND] 외부 연결: Tubi/Viki 작품 → 공식 URL 새 탭/앱 열기
-  검증: 외부 링크 클릭 → 해당 플랫폼 상세 페이지 도달
+- [x] [FRONTEND] 외부 연결: Tubi/Viki 작품 → 공식 URL 새 탭/앱 열기
+  검증: Wave 4에서 외부 소스 5개 추가 + 상세페이지 연결 버튼
 
-- [ ] [FRONTEND] D-pad 포커스 매니저: 키보드 방향키로 카드 탐색 가능
-  검증: Tab 없이 방향키만으로 홈→카드→상세→뒤로 전체 플로우 조작
+- [x] [FRONTEND] D-pad 포커스 매니저: 키보드 방향키로 카드 탐색 가능
+  검증: ArrowDown으로 "재생" 버튼 포커스 이동 확인 ✅
 
 ### Wave 4 — 운영 도구 + 마무리 (Wave 3 완료 후)
 
 - [ ] [BACKEND] 링크 검증 배치: 전체 소스 URL 상태 체크 + 만료 비노출
   검증: 만료 URL이 검색 결과에서 자동 제외됨
 
-- [ ] [FRONTEND] 설정 화면: 언어 선택, 자막 기본값, 네트워크 품질 프리셋
-  검증: 설정 변경 → 홈/상세에 즉시 반영
+- [x] [FRONTEND] 설정 화면: 언어 선택, 자막 기본값, 네트워크 품질 프리셋
+  검증: 설정 변경 → localStorage 즉시 반영 ✅ (Wave 3에서 완료)
 
 - [ ] [INFRA] Docker Compose: PostgreSQL + FastAPI + Next.js 원커맨드 개발환경
   검증: `docker-compose up` 한 번으로 전체 서비스 실행

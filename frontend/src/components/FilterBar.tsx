@@ -48,7 +48,7 @@ export default function FilterBar({ params, onChange }: FilterBarProps) {
       />
 
       {/* 필터 초기화 */}
-      {(params.genre || params.country || params.watch_mode) && (
+      {(params.genre || params.country || params.watch_mode || params.verified_only) && (
         <button
           onClick={() =>
             onChange({ q: params.q, sort_by: params.sort_by, page: 1, page_size: params.page_size })
