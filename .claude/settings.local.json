@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip -o jh-free-ott-hub.zip)",
+      "Bash(mv jh-free-ott-hub/* .)",
+      "Bash(mv jh-free-ott-hub/.env.example .)",
+      "Bash(mv jh-free-ott-hub/.gitignore .)",
+      "Bash(rmdir jh-free-ott-hub:*)"
+    ]
+  }
+}
