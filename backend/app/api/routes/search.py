@@ -16,7 +16,7 @@ async def search_contents(
     subtitle_lang: str | None = Query(None, description="자막 언어 필터"),
     watch_mode: str | None = Query(None, description="in_app 또는 external"),
     verified_only: bool = Query(False, description="검증된 스트림만 필터"),
-    sort_by: str = Query("title", description="정렬 기준: title | year | verified"),
+    sort_by: str = Query("title", description="정렬 기준: title | year | recent | latest | rating | popularity"),
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
     db: AsyncSession = Depends(get_db),

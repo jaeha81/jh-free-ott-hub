@@ -7,7 +7,9 @@ interface HeroBannerProps {
 }
 
 export default function HeroBanner({ content }: HeroBannerProps) {
-  const hasInApp = content.sources.some((s) => s.watch_mode === "in_app" && s.stream_url);
+  const hasVerifiedInApp = content.sources.some(
+    (s) => s.watch_mode === "in_app" && s.stream_url && s.is_verified
+  );
 
   return (
     <div className="relative w-full h-[56vw] max-h-[700px] min-h-[400px] overflow-hidden">
@@ -53,7 +55,7 @@ export default function HeroBanner({ content }: HeroBannerProps) {
           )}
 
           <div className="flex items-center gap-3">
-            {hasInApp ? (
+            {hasVerifiedInApp ? (
               <Link
                 href={`/player/${content.id}`}
                 className="flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-md

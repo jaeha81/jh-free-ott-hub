@@ -17,6 +17,10 @@ class ContentBase(BaseModel):
     tmdb_id: int | None = None
     audience: str | None = None
     license_class: str | None = None
+    vote_average: float = 0
+    vote_count: int = 0
+    runtime: int = 0
+    popularity: float = 0
 
 
 class ContentCreate(ContentBase):

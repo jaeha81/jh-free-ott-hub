@@ -26,6 +26,10 @@ export interface Content {
   tmdb_id: number | null;
   audience: string | null;
   license_class: string | null;
+  vote_average?: number;
+  vote_count?: number;
+  runtime?: number;
+  popularity?: number;
   created_at: string;
   updated_at: string;
   sources: Source[];
