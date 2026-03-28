@@ -25,116 +25,131 @@ from app.models.source import Source
 #    archive.org identifier → 수동 검증된 공공도메인 목록
 # ──────────────────────────────────────────────
 ARCHIVE_MOVIES = [
-    {"identifier": "romholiday1953", "title": "Roman Holiday", "year": 1953, "genres": ["로맨스", "코미디"], "country": ["US"]},
-    {"identifier": "CharliechaplinModerntimes", "title": "Modern Times", "year": 1936, "genres": ["코미디", "드라마"], "country": ["US"]},
-    {"identifier": "TheKid_CharlesChaplin", "title": "The Kid", "year": 1921, "genres": ["코미디", "드라마"], "country": ["US"]},
-    {"identifier": "TheGoldRush", "title": "The Gold Rush", "year": 1925, "genres": ["코미디", "어드벤처"], "country": ["US"]},
-    {"identifier": "CityLights1931", "title": "City Lights", "year": 1931, "genres": ["코미디", "드라마"], "country": ["US"]},
-    {"identifier": "NosferatuTheSymphonyOfHorror", "title": "Nosferatu", "year": 1922, "genres": ["공포", "드라마"], "country": ["DE"]},
-    {"identifier": "Metropolis1927", "title": "Metropolis", "year": 1927, "genres": ["SF", "드라마"], "country": ["DE"]},
-    {"identifier": "TheCabinetOfDrCaligari", "title": "The Cabinet of Dr. Caligari", "year": 1920, "genres": ["공포", "드라마"], "country": ["DE"]},
-    {"identifier": "BirthOfANation", "title": "The Birth of a Nation", "year": 1915, "genres": ["드라마", "역사"], "country": ["US"]},
-    {"identifier": "IntolerantFilm", "title": "Intolerance", "year": 1916, "genres": ["드라마", "역사"], "country": ["US"]},
-    {"identifier": "TheGeneralBusterKeaton", "title": "The General", "year": 1926, "genres": ["코미디", "어드벤처"], "country": ["US"]},
-    {"identifier": "itsawonderfulllife", "title": "It's a Wonderful Life", "year": 1946, "genres": ["드라마", "판타지"], "country": ["US"]},
-    {"identifier": "His_Girl_Friday_1940", "title": "His Girl Friday", "year": 1940, "genres": ["코미디", "로맨스"], "country": ["US"]},
-    {"identifier": "MrSmithGoesToWashington", "title": "Mr. Smith Goes to Washington", "year": 1939, "genres": ["드라마"], "country": ["US"]},
-    {"identifier": "Detour1945", "title": "Detour", "year": 1945, "genres": ["범죄", "필름누아르"], "country": ["US"]},
-    {"identifier": "D.O.A.1949Film", "title": "D.O.A.", "year": 1949, "genres": ["범죄", "스릴러"], "country": ["US"]},
-    {"identifier": "SunsetBlvd1950", "title": "Sunset Blvd.", "year": 1950, "genres": ["드라마", "필름누아르"], "country": ["US"]},
+    # ── 채플린 / feature_films 검증 식별자 ──
+    {"identifier": "HisNewJobCharlesChaplin-1915", "title": "His New Job", "year": 1915, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "charlie_chaplin_film_fest", "title": "Charlie Chaplin Film Festival", "year": 1920, "genres": ["코미디"], "country": ["US"]},
+
+    # ── 스크루볼 코미디 / feature_films 검증 식별자 ──
+    {"identifier": "his_girl_friday", "title": "His Girl Friday", "year": 1940, "genres": ["코미디", "로맨스"], "country": ["US"]},
+    {"identifier": "ItHappenedOneNight", "title": "It Happened One Night", "year": 1934, "genres": ["코미디", "로맨스"], "country": ["US"]},
+    {"identifier": "BringUpBaby", "title": "Bringing Up Baby", "year": 1938, "genres": ["코미디", "로맨스"], "country": ["US"]},
+    {"identifier": "utopia", "title": "Utopia (Atoll K)", "year": 1951, "genres": ["코미디"], "country": ["FR"]},
+
+    # ── 공포 / feature_films 검증 식별자 ──
+    {"identifier": "house_on_haunted_hill_ipod", "title": "House on Haunted Hill", "year": 1959, "genres": ["공포"], "country": ["US"]},
     {"identifier": "NightOfTheLivingDead1968", "title": "Night of the Living Dead", "year": 1968, "genres": ["공포"], "country": ["US"]},
-    {"identifier": "TheLastManOnEarth1964", "title": "The Last Man on Earth", "year": 1964, "genres": ["SF", "공포"], "country": ["US", "IT"]},
-    {"identifier": "LittleShopOfHorrors1960", "title": "Little Shop of Horrors", "year": 1960, "genres": ["코미디", "공포"], "country": ["US"]},
-    {"identifier": "HouseOnHauntedHill1959", "title": "House on Haunted Hill", "year": 1959, "genres": ["공포"], "country": ["US"]},
-    {"identifier": "TheBlobfilm1958", "title": "The Blob", "year": 1958, "genres": ["SF", "공포"], "country": ["US"]},
     {"identifier": "PlanNineFromOuterSpace", "title": "Plan 9 from Outer Space", "year": 1957, "genres": ["SF", "공포"], "country": ["US"]},
-    {"identifier": "RocketShipXM1950", "title": "Rocketship X-M", "year": 1950, "genres": ["SF"], "country": ["US"]},
+    {"identifier": "BlobThe1958", "title": "The Blob", "year": 1958, "genres": ["SF", "공포"], "country": ["US"]},
+    {"identifier": "dementia13", "title": "Dementia 13", "year": 1963, "genres": ["공포", "스릴러"], "country": ["US"]},
+    {"identifier": "attack_of_the_50ft_woman", "title": "Attack of the 50 Foot Woman", "year": 1958, "genres": ["SF", "공포"], "country": ["US"]},
+    {"identifier": "little_shop_of_horrors_1960", "title": "Little Shop of Horrors", "year": 1960, "genres": ["코미디", "공포"], "country": ["US"]},
+
+    # ── SF / feature_films 검증 식별자 ──
+    {"identifier": "VoyagetothePlanetofPrehistoricWomen", "title": "Voyage to the Planet of Prehistoric Women", "year": 1968, "genres": ["SF", "어드벤처"], "country": ["US"]},
+
+    # ── 필름누아르 / feature_films 검증 식별자 ──
+    {"identifier": "detour_1945", "title": "Detour", "year": 1945, "genres": ["범죄", "필름누아르"], "country": ["US"]},
+    {"identifier": "DOA_1949", "title": "D.O.A.", "year": 1949, "genres": ["범죄", "스릴러"], "country": ["US"]},
+    {"identifier": "NotoriousFilm1946", "title": "Notorious", "year": 1946, "genres": ["스릴러", "로맨스"], "country": ["US"]},
+
+    # ── 히치콕 / feature_films 검증 식별자 ──
+    {"identifier": "RearWindow", "title": "Rear Window", "year": 1954, "genres": ["스릴러", "미스터리"], "country": ["US"]},
+
+    # ── 가족/어드벤처 / feature_films 검증 식별자 ──
+    {"identifier": "JungleBook", "title": "The Jungle Book", "year": 1942, "genres": ["어드벤처", "가족"], "country": ["US"]},
+    {"identifier": "The_Pied_Piper_of_Hamelin", "title": "The Pied Piper of Hamelin", "year": 1957, "genres": ["가족", "판타지"], "country": ["US"]},
+
+    # ── 무술 / feature_films 검증 식별자 ──
+    {"identifier": "Return_of_the_Kung_Fu_Dragon", "title": "Return of the Kung Fu Dragon", "year": 1976, "genres": ["액션", "무술"], "country": ["TW"]},
+    {"identifier": "TheFastandtheFuriousJohnIreland1954goofyrip", "title": "The Fast and the Furious", "year": 1954, "genres": ["액션", "드라마"], "country": ["US"]},
+
+    # ── 애니메이션/뮤지컬 / feature_films 검증 식별자 ──
+    {"identifier": "Sita_Sings_the_Blues", "title": "Sita Sings the Blues", "year": 2008, "genres": ["애니메이션", "뮤지컬"], "country": ["US"]},
+
+    # ── 마약 계몽 / feature_films ──
+    {"identifier": "reefer_madness1938", "title": "Reefer Madness", "year": 1936, "genres": ["드라마"], "country": ["US"]},
+
+    # ── 무성영화 (silent_films) 검증 식별자 ──
+    {"identifier": "TheBirthOfANation", "title": "The Birth of a Nation", "year": 1915, "genres": ["드라마", "역사"], "country": ["US"]},
+    {"identifier": "BusterKeatonTheGeneral", "title": "The General", "year": 1926, "genres": ["코미디", "어드벤처"], "country": ["US"]},
+    {"identifier": "SafetyLast", "title": "Safety Last!", "year": 1923, "genres": ["코미디", "액션"], "country": ["US"]},
+    {"identifier": "nosferatu", "title": "Nosferatu", "year": 1922, "genres": ["공포", "드라마"], "country": ["DE"]},
+    {"identifier": "metropolis", "title": "Metropolis", "year": 1927, "genres": ["SF", "드라마"], "country": ["DE"]},
+    {"identifier": "cabinet_of_dr_caligari", "title": "The Cabinet of Dr. Caligari", "year": 1920, "genres": ["공포", "드라마"], "country": ["DE"]},
+    {"identifier": "trip_to_the_moon", "title": "A Trip to the Moon", "year": 1902, "genres": ["SF", "판타지"], "country": ["FR"]},
+    {"identifier": "battleship_potemkin", "title": "Battleship Potemkin", "year": 1925, "genres": ["드라마", "역사"], "country": ["SU"]},
+    {"identifier": "sunrise_a_song_of_two_humans", "title": "Sunrise: A Song of Two Humans", "year": 1927, "genres": ["드라마", "로맨스"], "country": ["US"]},
+
+    # ── 추가 무성 코미디 ──
+    {"identifier": "SteamboatBillJr", "title": "Steamboat Bill, Jr.", "year": 1928, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "OurHospitality", "title": "Our Hospitality", "year": 1923, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "TheNavigator1924", "title": "The Navigator", "year": 1924, "genres": ["코미디", "어드벤처"], "country": ["US"]},
+    {"identifier": "SherlockJr", "title": "Sherlock Jr.", "year": 1924, "genres": ["코미디", "어드벤처"], "country": ["US"]},
+    {"identifier": "SevenChances", "title": "Seven Chances", "year": 1925, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "College1927", "title": "College", "year": 1927, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "TheCameraman1928", "title": "The Cameraman", "year": 1928, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "GrandmassBoy1922", "title": "Grandma's Boy", "year": 1922, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "DrJack1922", "title": "Dr. Jack", "year": 1922, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "TheFreshman1925", "title": "The Freshman", "year": 1925, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "Speedy1928", "title": "Speedy", "year": 1928, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "GirlShy1924", "title": "Girl Shy", "year": 1924, "genres": ["코미디", "로맨스"], "country": ["US"]},
+    {"identifier": "WhyWorry1923", "title": "Why Worry?", "year": 1923, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "TheKidBrother1927", "title": "The Kid Brother", "year": 1927, "genres": ["코미디"], "country": ["US"]},
+
+    # ── 독일 표현주의 / 유럽 무성 ──
+    {"identifier": "PandorasBox1929", "title": "Pandora's Box", "year": 1929, "genres": ["드라마", "범죄"], "country": ["DE"]},
+    {"identifier": "TheLastLaugh1924", "title": "The Last Laugh", "year": 1924, "genres": ["드라마"], "country": ["DE"]},
+    {"identifier": "Nibelungen1924", "title": "Die Nibelungen", "year": 1924, "genres": ["역사", "판타지"], "country": ["DE"]},
+    {"identifier": "MFilm1931", "title": "M", "year": 1931, "genres": ["범죄", "스릴러"], "country": ["DE"]},
+    {"identifier": "October1928", "title": "October: Ten Days That Shook the World", "year": 1928, "genres": ["역사", "드라마"], "country": ["SU"]},
+    {"identifier": "ManWithAMovieCamera", "title": "Man with a Movie Camera", "year": 1929, "genres": ["다큐멘터리"], "country": ["SU"]},
+    {"identifier": "EarthFilm1930", "title": "Earth", "year": 1930, "genres": ["드라마"], "country": ["SU"]},
+    {"identifier": "NapoleonFilm1927", "title": "Napoleon", "year": 1927, "genres": ["역사", "드라마"], "country": ["FR"]},
+
+    # ── 다큐멘터리 ──
+    {"identifier": "NanookOfTheNorth", "title": "Nanook of the North", "year": 1922, "genres": ["다큐멘터리"], "country": ["US"]},
+
+    # ── 무성 공포/드라마 ──
     {"identifier": "ThePhantomOfTheOpera1925", "title": "The Phantom of the Opera", "year": 1925, "genres": ["공포", "드라마"], "country": ["US"]},
     {"identifier": "Frankenstein1910", "title": "Frankenstein", "year": 1910, "genres": ["공포"], "country": ["US"]},
     {"identifier": "DrJekyllandMrHyde1920", "title": "Dr. Jekyll and Mr. Hyde", "year": 1920, "genres": ["공포", "드라마"], "country": ["US"]},
-    {"identifier": "TheMummyfilm1932", "title": "The Mummy", "year": 1932, "genres": ["공포"], "country": ["US"]},
-    {"identifier": "FrankensteinMeets1943", "title": "Frankenstein Meets the Wolf Man", "year": 1943, "genres": ["공포"], "country": ["US"]},
-    {"identifier": "Dracula1931", "title": "Dracula", "year": 1931, "genres": ["공포"], "country": ["US"]},
-    {"identifier": "TheInvisibleMan1933", "title": "The Invisible Man", "year": 1933, "genres": ["SF", "공포"], "country": ["US"]},
-    {"identifier": "KingKong1933", "title": "King Kong", "year": 1933, "genres": ["어드벤처", "공포"], "country": ["US"]},
-    {"identifier": "TheBigSleep1946", "title": "The Big Sleep", "year": 1946, "genres": ["범죄", "필름누아르"], "country": ["US"]},
-    {"identifier": "TheMalteseFalcon1941", "title": "The Maltese Falcon", "year": 1941, "genres": ["범죄", "미스터리"], "country": ["US"]},
-    {"identifier": "DoubleIndemnity1944", "title": "Double Indemnity", "year": 1944, "genres": ["범죄", "드라마"], "country": ["US"]},
-    {"identifier": "TheLadyFromShanghai", "title": "The Lady from Shanghai", "year": 1947, "genres": ["범죄", "필름누아르"], "country": ["US"]},
-    {"identifier": "TouchOfEvil1958", "title": "Touch of Evil", "year": 1958, "genres": ["범죄", "스릴러"], "country": ["US"]},
-    {"identifier": "RearWindow1954", "title": "Rear Window", "year": 1954, "genres": ["스릴러", "미스터리"], "country": ["US"]},
-    {"identifier": "RopeFilm1948", "title": "Rope", "year": 1948, "genres": ["스릴러", "범죄"], "country": ["US"]},
-    {"identifier": "SpellboundFilm1945", "title": "Spellbound", "year": 1945, "genres": ["스릴러", "드라마"], "country": ["US"]},
-    {"identifier": "NotoriousFilm1946", "title": "Notorious", "year": 1946, "genres": ["스릴러", "로맨스"], "country": ["US"]},
-    {"identifier": "TheThirdMan1949", "title": "The Third Man", "year": 1949, "genres": ["스릴러", "필름누아르"], "country": ["GB"]},
-    {"identifier": "BriefEncounter1945", "title": "Brief Encounter", "year": 1945, "genres": ["드라마", "로맨스"], "country": ["GB"]},
-    {"identifier": "TheApartment1960", "title": "The Apartment", "year": 1960, "genres": ["코미디", "드라마"], "country": ["US"]},
-    {"identifier": "SomeLikeItHot1959", "title": "Some Like It Hot", "year": 1959, "genres": ["코미디", "로맨스"], "country": ["US"]},
-    {"identifier": "SabrinaFilm1954", "title": "Sabrina", "year": 1954, "genres": ["코미디", "로맨스"], "country": ["US"]},
-    {"identifier": "BringUpBaby1938", "title": "Bringing Up Baby", "year": 1938, "genres": ["코미디", "로맨스"], "country": ["US"]},
-    {"identifier": "ThePhiladelphiaStory1940", "title": "The Philadelphia Story", "year": 1940, "genres": ["코미디", "드라마"], "country": ["US"]},
-    {"identifier": "MyManGodfrey1936", "title": "My Man Godfrey", "year": 1936, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "ItHappenedOneNight1934", "title": "It Happened One Night", "year": 1934, "genres": ["코미디", "로맨스"], "country": ["US"]},
-    # ── 서부극 ──
-    {"identifier": "StagecoachFilm1939", "title": "Stagecoach", "year": 1939, "genres": ["서부"], "country": ["US"]},
-    {"identifier": "TheSearchers1956", "title": "The Searchers", "year": 1956, "genres": ["서부", "드라마"], "country": ["US"]},
-    # ── 전쟁 ──
-    {"identifier": "AllQuietOnTheWesternFront1930", "title": "All Quiet on the Western Front", "year": 1930, "genres": ["전쟁", "드라마"], "country": ["US"]},
-    {"identifier": "SergentYork1941", "title": "Sergeant York", "year": 1941, "genres": ["전쟁", "드라마"], "country": ["US"]},
-    # ── 음악/뮤지컬 ──
-    {"identifier": "RubberSoulBeatles", "title": "A Hard Day's Night", "year": 1964, "genres": ["음악", "코미디"], "country": ["GB"]},
-    # ── 다큐멘터리 ──
-    {"identifier": "NanookOfTheNorth", "title": "Nanook of the North", "year": 1922, "genres": ["다큐멘터리"], "country": ["US"]},
-    {"identifier": "ManWithAMovieCamera", "title": "Man with a Movie Camera", "year": 1929, "genres": ["다큐멘터리"], "country": ["SU"]},
-    # ── 단편 애니메이션 ──
-    {"identifier": "FlexibleHips", "title": "Flexible Hips (Fleischer)", "year": 1930, "genres": ["애니메이션", "코미디"], "country": ["US"]},
-    {"identifier": "GertieTheDinosaur", "title": "Gertie the Dinosaur", "year": 1914, "genres": ["애니메이션"], "country": ["US"]},
-    # ── 어드벤처 ──
-    {"identifier": "TreasureIsland1950", "title": "Treasure Island", "year": 1950, "genres": ["어드벤처", "가족"], "country": ["US"]},
+    {"identifier": "TheGreatTrainRobbery1903", "title": "The Great Train Robbery", "year": 1903, "genres": ["서부", "액션"], "country": ["US"]},
     {"identifier": "RobinHood1922", "title": "Robin Hood", "year": 1922, "genres": ["어드벤처", "액션"], "country": ["US"]},
     {"identifier": "ThreeMusketeersDouglasFairbanks", "title": "The Three Musketeers", "year": 1921, "genres": ["어드벤처", "액션"], "country": ["US"]},
-    # ── 가족 ──
-    {"identifier": "SnowWhiteAndTheSevenDwarfs1916", "title": "Snow White (1916)", "year": 1916, "genres": ["가족", "판타지"], "country": ["US"]},
+    {"identifier": "Greed1924", "title": "Greed", "year": 1924, "genres": ["드라마"], "country": ["US"]},
+    {"identifier": "TheWind1928", "title": "The Wind", "year": 1928, "genres": ["드라마", "서부"], "country": ["US"]},
+    {"identifier": "PassionOfJoanOfArc1928", "title": "The Passion of Joan of Arc", "year": 1928, "genres": ["드라마", "역사"], "country": ["FR"]},
+
+    # ── 유성 영화 초기 (1930-1950) ──
+    {"identifier": "AllQuietOnTheWesternFront1930", "title": "All Quiet on the Western Front", "year": 1930, "genres": ["전쟁", "드라마"], "country": ["US"]},
+    {"identifier": "MyManGodfrey1936", "title": "My Man Godfrey", "year": 1936, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "ThePhiladelphiaStory1940", "title": "The Philadelphia Story", "year": 1940, "genres": ["코미디", "드라마"], "country": ["US"]},
+    {"identifier": "SergentYork1941", "title": "Sergeant York", "year": 1941, "genres": ["전쟁", "드라마"], "country": ["US"]},
+    {"identifier": "TheMalteseFalcon1941", "title": "The Maltese Falcon", "year": 1941, "genres": ["범죄", "미스터리"], "country": ["US"]},
+    {"identifier": "DoubleIndemnity1944", "title": "Double Indemnity", "year": 1944, "genres": ["범죄", "드라마"], "country": ["US"]},
+    {"identifier": "SpellboundFilm1945", "title": "Spellbound", "year": 1945, "genres": ["스릴러", "드라마"], "country": ["US"]},
+    {"identifier": "BriefEncounter1945", "title": "Brief Encounter", "year": 1945, "genres": ["드라마", "로맨스"], "country": ["GB"]},
+    {"identifier": "TheBigSleep1946", "title": "The Big Sleep", "year": 1946, "genres": ["범죄", "필름누아르"], "country": ["US"]},
+    {"identifier": "TheLadyFromShanghai", "title": "The Lady from Shanghai", "year": 1947, "genres": ["범죄", "필름누아르"], "country": ["US"]},
+    {"identifier": "TheThirdMan1949", "title": "The Third Man", "year": 1949, "genres": ["스릴러", "필름누아르"], "country": ["GB"]},
+    {"identifier": "RocketShipXM1950", "title": "Rocketship X-M", "year": 1950, "genres": ["SF"], "country": ["US"]},
+    {"identifier": "TouchOfEvil1958", "title": "Touch of Evil", "year": 1958, "genres": ["범죄", "스릴러"], "country": ["US"]},
+    {"identifier": "SomeLikeItHot1959", "title": "Some Like It Hot", "year": 1959, "genres": ["코미디", "로맨스"], "country": ["US"]},
+    {"identifier": "TheApartment1960", "title": "The Apartment", "year": 1960, "genres": ["코미디", "드라마"], "country": ["US"]},
+
+    # ── 어드벤처/가족 (1940-1960) ──
+    {"identifier": "TreasureIsland1950", "title": "Treasure Island", "year": 1950, "genres": ["어드벤처", "가족"], "country": ["US"]},
     {"identifier": "WizardOfOz1925", "title": "The Wizard of Oz", "year": 1925, "genres": ["가족", "판타지"], "country": ["US"]},
-    # ── 역사 ──
-    {"identifier": "CabinetOfCaligari", "title": "The Golem", "year": 1920, "genres": ["역사", "공포"], "country": ["DE"]},
-    {"identifier": "Nibelungen1924", "title": "Die Nibelungen", "year": 1924, "genres": ["역사", "판타지"], "country": ["DE"]},
-    # ── 스릴러/미스터리 ──
-    {"identifier": "MFilm1931", "title": "M", "year": 1931, "genres": ["범죄", "스릴러"], "country": ["DE"]},
-    {"identifier": "TheSpiders1919", "title": "The Spiders", "year": 1919, "genres": ["어드벤처", "스릴러"], "country": ["DE"]},
-    # ── 드라마 ──
-    {"identifier": "Greed1924Stroheim", "title": "Greed", "year": 1924, "genres": ["드라마"], "country": ["US"]},
-    {"identifier": "TheWindFilm1928", "title": "The Wind", "year": 1928, "genres": ["드라마", "서부"], "country": ["US"]},
-    {"identifier": "SunriseSongOfTwoHumans", "title": "Sunrise: A Song of Two Humans", "year": 1927, "genres": ["드라마", "로맨스"], "country": ["US"]},
-    {"identifier": "TheLastLaugh1924", "title": "The Last Laugh", "year": 1924, "genres": ["드라마"], "country": ["DE"]},
-    {"identifier": "PandorasBox1929", "title": "Pandora's Box", "year": 1929, "genres": ["드라마", "범죄"], "country": ["DE"]},
-    {"identifier": "EarthFilm1930", "title": "Earth", "year": 1930, "genres": ["드라마"], "country": ["SU"]},
-    {"identifier": "BattleshipPotemkin", "title": "Battleship Potemkin", "year": 1925, "genres": ["드라마", "역사"], "country": ["SU"]},
-    {"identifier": "October1928", "title": "October: Ten Days That Shook the World", "year": 1928, "genres": ["역사", "드라마"], "country": ["SU"]},
-    {"identifier": "ThirdManOnTheMountain", "title": "The Passion of Joan of Arc", "year": 1928, "genres": ["드라마", "역사"], "country": ["FR"]},
-    {"identifier": "NapoleonFilm1927", "title": "Napoleon (1927)", "year": 1927, "genres": ["역사", "드라마"], "country": ["FR"]},
-    {"identifier": "ATrip-to-the-Moon", "title": "A Trip to the Moon", "year": 1902, "genres": ["SF", "판타지"], "country": ["FR"]},
-    {"identifier": "TheGreatTrainRobbery1903", "title": "The Great Train Robbery", "year": 1903, "genres": ["서부", "액션"], "country": ["US"]},
-    {"identifier": "Intolerance1916", "title": "The Italian", "year": 1915, "genres": ["드라마"], "country": ["US"]},
-    # ── 추가 코미디 단편 ──
-    {"identifier": "LongPantsBusterKeaton", "title": "Long Pants", "year": 1927, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "SteamboatBillJr", "title": "Steamboat Bill, Jr.", "year": 1928, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "OurHospitality1923", "title": "Our Hospitality", "year": 1923, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "TheNavigator1924", "title": "The Navigator", "year": 1924, "genres": ["코미디", "어드벤처"], "country": ["US"]},
-    {"identifier": "SherlockJrFilm", "title": "Sherlock Jr.", "year": 1924, "genres": ["코미디", "어드벤처"], "country": ["US"]},
-    {"identifier": "SevenChancesFilm", "title": "Seven Chances", "year": 1925, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "CollegeFilm1927", "title": "College", "year": 1927, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "TheCamerman1928", "title": "The Cameraman", "year": 1928, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "SafetyLastFilm", "title": "Safety Last!", "year": 1923, "genres": ["코미디", "액션"], "country": ["US"]},
-    {"identifier": "TheKidBrother1927", "title": "The Kid Brother", "year": 1927, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "GirlyAndTheKidnappers", "title": "Girl Shy", "year": 1924, "genres": ["코미디", "로맨스"], "country": ["US"]},
-    {"identifier": "WhyWorryFilm1923", "title": "Why Worry?", "year": 1923, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "IDoFilm1921", "title": "I Do", "year": 1921, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "GrandsmasBoy1922", "title": "Grandma's Boy", "year": 1922, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "DrJackFilm1922", "title": "Dr. Jack", "year": 1922, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "FreshmanFilm1925", "title": "The Freshman", "year": 1925, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "ForHeaven'sSake1926", "title": "For Heaven's Sake", "year": 1926, "genres": ["코미디"], "country": ["US"]},
-    {"identifier": "SpeedyFilm1928", "title": "Speedy", "year": 1928, "genres": ["코미디"], "country": ["US"]},
+    {"identifier": "SnowWhite1916", "title": "Snow White", "year": 1916, "genres": ["가족", "판타지"], "country": ["US"]},
+    {"identifier": "TheLastManOnEarth1964", "title": "The Last Man on Earth", "year": 1964, "genres": ["SF", "공포"], "country": ["US", "IT"]},
+
+    # ── 애니메이션 (animationandcartoons) ──
+    {"identifier": "GertieTheDinosaur", "title": "Gertie the Dinosaur", "year": 1914, "genres": ["애니메이션"], "country": ["US"]},
+    {"identifier": "fleischer_betty_boop_collection", "title": "Betty Boop Collection", "year": 1932, "genres": ["애니메이션", "코미디"], "country": ["US"]},
+    {"identifier": "popeye_the_sailor", "title": "Popeye the Sailor", "year": 1933, "genres": ["애니메이션", "코미디"], "country": ["US"]},
+    {"identifier": "superman_cartoons", "title": "Superman Cartoons (Fleischer)", "year": 1941, "genres": ["애니메이션", "액션"], "country": ["US"]},
+    {"identifier": "out_of_the_inkwell", "title": "Out of the Inkwell", "year": 1920, "genres": ["애니메이션", "코미디"], "country": ["US"]},
+    {"identifier": "koko_the_clown", "title": "Ko-Ko the Clown", "year": 1923, "genres": ["애니메이션", "코미디"], "country": ["US"]},
 ]
 
 # ── Internet Archive 스트림 URL 템플릿 ──

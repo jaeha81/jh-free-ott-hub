@@ -11,7 +11,10 @@
       "Bash(python -m app.tasks.seed_data)",
       "Bash(curl -s \"http://localhost:8000/api/contents/?page=1&page_size=5\")",
       "Bash(python -m json.tool)",
-      "Bash(python -c \":*)"
+      "Bash(python -c \":*)",
+      "Skill(jh-variant)",
+      "Skill(jh-variant:*)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }
