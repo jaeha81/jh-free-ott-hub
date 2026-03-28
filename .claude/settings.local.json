@@ -5,7 +5,13 @@
       "Bash(mv jh-free-ott-hub/* .)",
       "Bash(mv jh-free-ott-hub/.env.example .)",
       "Bash(mv jh-free-ott-hub/.gitignore .)",
-      "Bash(rmdir jh-free-ott-hub:*)"
+      "Bash(rmdir jh-free-ott-hub:*)",
+      "Bash(pip install:*)",
+      "Bash(pip show:*)",
+      "Bash(python -m app.tasks.seed_data)",
+      "Bash(curl -s \"http://localhost:8000/api/contents/?page=1&page_size=5\")",
+      "Bash(python -m json.tool)",
+      "Bash(python -c \":*)"
     ]
   }
 }
