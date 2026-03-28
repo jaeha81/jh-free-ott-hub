@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import FocusManager from "@/components/FocusManager";
 
 export const metadata: Metadata = {
   title: "JH Free OTT Hub — 무료 합법 영화·애니 허브",
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="ko" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-[#141414] text-white">
         <Navbar />
+        <FocusManager />
         <main className="flex-1 pt-16">{children}</main>
       </body>
     </html>

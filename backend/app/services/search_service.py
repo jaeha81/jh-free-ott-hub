@@ -18,9 +18,10 @@ class SearchService:
         country: str | None,
         subtitle_lang: str | None,
         watch_mode: str | None,
-        sort_by: str,
-        page: int,
-        page_size: int,
+        verified_only: bool = False,
+        sort_by: str = "title",
+        page: int = 1,
+        page_size: int = 20,
     ) -> ContentListResponse:
         stmt = select(Content).options(selectinload(Content.sources))
 
@@ -36,16 +37,21 @@ class SearchService:
             stmt = stmt.where(Content.genres.ilike(f"%{genre}%"))
         if country:
             stmt = stmt.where(Content.country.ilike(f"%{country}%"))
-        if subtitle_lang or watch_mode:
+        needs_join = subtitle_lang or watch_mode or verified_only
+        if needs_join:
             stmt = stmt.join(Source, Source.content_id == Content.id)
             if subtitle_lang:
                 stmt = stmt.where(Source.subtitle_languages.ilike(f"%{subtitle_lang}%"))
             if watch_mode:
                 stmt = stmt.where(Source.watch_mode == watch_mode)
+            if verified_only:
+                stmt = stmt.where(Source.is_verified.is_(True))
             stmt = stmt.distinct()
 
         if sort_by == "year":
             stmt = stmt.order_by(Content.year.desc().nulls_last())
+        elif sort_by == "recent":
+            stmt = stmt.order_by(Content.created_at.desc())
         else:
             stmt = stmt.order_by(Content.title)
 

@@ -45,6 +45,7 @@ export interface SearchParams {
   country?: string;
   subtitle_lang?: string;
   watch_mode?: string;
+  verified_only?: boolean;
   sort_by?: string;
   page?: number;
   page_size?: number;

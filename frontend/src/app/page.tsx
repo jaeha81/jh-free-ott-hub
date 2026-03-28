@@ -12,7 +12,11 @@ export default async function HomePage() {
     // 백엔드 미실행 시 빈 상태 표시
   }
 
-  const hero = contents[0] ?? null;
+  // 검증된 인앱 스트림 항목을 히어로로 우선 선택
+  const verifiedInApp = contents.filter((c) =>
+    c.sources.some((s) => s.watch_mode === "in_app" && s.is_verified && s.stream_url)
+  );
+  const hero = verifiedInApp[0] ?? contents.find((c) => c.sources.some((s) => s.watch_mode === "in_app")) ?? contents[0] ?? null;
 
   // 장르별 분류
   const byGenre = (genre: string) =>

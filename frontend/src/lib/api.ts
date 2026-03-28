@@ -32,6 +32,7 @@ export async function searchContents(params: SearchParams): Promise<ContentListR
   if (params.country) p.country = params.country;
   if (params.subtitle_lang) p.subtitle_lang = params.subtitle_lang;
   if (params.watch_mode) p.watch_mode = params.watch_mode;
+  if (params.verified_only) p.verified_only = "true";
   if (params.sort_by) p.sort_by = params.sort_by;
   p.page = String(params.page ?? 1);
   p.page_size = String(params.page_size ?? 20);

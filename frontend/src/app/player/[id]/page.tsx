@@ -49,6 +49,8 @@ export default async function PlayerPage({ params }: Props) {
         <Player
           streamUrl={inAppSource.stream_url!}
           title={content.title}
+          qualityHint={inAppSource.quality_hint ?? undefined}
+          archiveUrl={inAppSource.external_url ?? undefined}
         />
       </div>
 
