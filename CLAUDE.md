@@ -1,4 +1,9 @@
-# CLAUDE.md — JH 무료 영화·애니 검색형 OTT 허브
+# JH 무료 영화·애니 검색형 OTT 허브 — Claude Code Context
+
+> 전역 지침: `~/.claude/CLAUDE.md` (워크플로우·보안·모델전략·Wiki 운영 전역 적용)
+> 본 파일: 이 프로젝트 고유 규칙만 기술
+
+---
 
 ## 프로젝트 개요
 
@@ -30,83 +35,6 @@
 | 메타데이터 API | TMDb (작품 정보) + Watchmode (가용성) | - |
 | 패키지 매니저 | npm (frontend) / pip (backend) | - |
 | 컨테이너 | Docker Compose (개발 환경) | - |
-
----
-
-## 디렉토리 구조
-
-```
-jh-free-ott-hub/
-├── CLAUDE.md                    # 이 파일 (글로벌 지침)
-├── docs/
-│   ├── research.md              # 리서치 결과
-│   ├── plan.md                  # 구현 계획
-│   └── implementation_plan_original.md  # 원본 계획서
-│
-├── frontend/                    # Next.js 앱
-│   ├── package.json
-│   ├── next.config.js
-│   ├── tailwind.config.ts
-│   ├── tsconfig.json
-│   └── src/
-│       ├── app/
-│       │   ├── layout.tsx       # 루트 레이아웃 (다크 테마 기본)
-│       │   ├── page.tsx         # 홈 (추천 캐러셀)
-│       │   ├── browse/page.tsx  # 탐색 (필터 검색)
-│       │   ├── content/[id]/page.tsx  # 상세
-│       │   ├── player/[id]/page.tsx   # 인앱 플레이어
-│       │   └── settings/page.tsx      # 설정
-│       ├── components/
-│       │   ├── ui/              # 공통 UI
-│       │   ├── ContentCard.tsx  # 작품 카드 (포커스 대응)
-│       │   ├── Carousel.tsx     # 가로 캐러셀
-│       │   ├── FilterBar.tsx    # 필터 바
-│       │   ├── SearchBar.tsx    # 검색 바
-│       │   ├── Player.tsx       # HLS 플레이어
-│       │   └── FocusManager.tsx # D-pad 포커스 관리
-│       ├── hooks/
-│       │   ├── useSearch.ts
-│       │   ├── useFocus.ts
-│       │   └── usePlayer.ts
-│       ├── lib/
-│       │   ├── api.ts           # FastAPI 클라이언트
-│       │   └── constants.ts
-│       └── types/
-│           └── content.ts
-│
-├── backend/                     # FastAPI 앱
-│   ├── requirements.txt
-│   ├── alembic.ini
-│   ├── alembic/versions/
-│   └── app/
-│       ├── main.py              # 진입점
-│       ├── core/
-│       │   ├── config.py        # 환경 설정 (.env 로드)
-│       │   ├── database.py      # async SQLAlchemy 연결
-│       │   └── deps.py          # 의존성 주입
-│       ├── api/routes/
-│       │   ├── contents.py      # /api/contents
-│       │   ├── search.py        # /api/search
-│       │   ├── sources.py       # /api/sources
-│       │   └── health.py        # /api/health
-│       ├── models/
-│       │   ├── content.py       # Content 모델
-│       │   └── source.py        # Source 모델
-│       ├── schemas/
-│       │   ├── content.py       # Pydantic 스키마
-│       │   └── source.py
-│       ├── services/
-│       │   ├── tmdb_service.py  # TMDb API 연동
-│       │   ├── content_service.py
-│       │   ├── search_service.py
-│       │   └── link_checker.py
-│       └── tasks/
-│           ├── seed_data.py     # 시드 데이터 수집
-│           └── verify_links.py  # 링크 검증 배치
-│
-├── docker-compose.yml
-└── .env.example
-```
 
 ---
 
@@ -274,13 +202,11 @@ CORS_ORIGINS=http://localhost:3000
 
 ---
 
-## 코딩 컨벤션
+## 커밋 컨벤션 (프로젝트 특화)
 
-- **Python:** snake_case, Black 포매터, type hint 필수, unknown 타입 지양
-- **TypeScript:** PascalCase(컴포넌트), camelCase(변수/함수), 경로는 kebab-case
-- **커밋:** 한글 커밋 메시지 허용, Wave 번호 접두사 (예: `[Wave1] Content 모델 생성`)
-- **레이어 패턴:** Route → Service → Model (백엔드) / Page → Component → Hook (프론트엔드)
-- **에러 처리:** FastAPI HTTPException, Next.js error.tsx boundary
+- Wave 번호 접두사 필수: `[Wave1] Content 모델 생성`
+- 레이어 패턴: Route → Service → Model (백엔드) / Page → Component → Hook (프론트엔드)
+- 에러 처리: FastAPI HTTPException, Next.js error.tsx boundary
 
 ---
 
@@ -292,17 +218,3 @@ CORS_ORIGINS=http://localhost:3000
 - [ ] 공공도메인 작품 1개 이상 인앱 재생 성공
 - [ ] 외부 플랫폼 작품 1개 이상 공식 링크/앱 연결 성공
 - [ ] 모바일/데스크톱/TV 브라우저에서 기본 조작 가능
-
----
-
-## 다중 에이전트 운용 (tmux 병렬 시)
-
-| 에이전트 | 역할 | 수정 권한 |
-|---------|------|----------|
-| Agent 1 (RESEARCH) | 코드베이스 분석 | docs/research.md만 |
-| Agent 2 (PLAN) | 계획 수립 | docs/plan.md만 |
-| Agent 3 (FRONTEND) | 프론트엔드 구현 | frontend/ 전체 |
-| Agent 4 (BACKEND) | 백엔드 구현 | backend/ 전체 |
-| Agent 5 (QA) | 타입 체크·검증 | 코드 수정 금지 |
-
-**규칙:** 하나의 파일은 하나의 에이전트만 수정한다.
