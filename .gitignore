@@ -30,3 +30,7 @@ pgdata/
 
 # Database (dev SQLite)
 *.db
+
+# SQLite 임시 파일
+*.db-shm
+*.db-wal
